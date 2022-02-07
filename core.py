@@ -11,7 +11,7 @@ async def on_ready():
 	print("Bot Is Started!")
 
 async def ver ( ctx ):
-    await ctx.send('Ubutal Bot Core 1.5.3. Based On Ubutal Bot 1.5.3')
+    await ctx.send('Ubutal Bot Core 1.6. Based On Ubutal Bot 1.6')
     
 @client.event
 async def on_command_error(ctx, error):
@@ -50,6 +50,16 @@ async def ping( ctx ):
 @client.command(pass_context = True)
 async def info( ctx ):
  await ctx.send('This Bot Based On Ubutal Bot Core!')
+
+@client.command(pass_context = True)
+async def kick(ctx, member: discord.Member, *, reason=None):
+    await member.kick(reason=reason)
+    await ctx.send(f'Member {member} Successfully Kicked.')
+    
+@client.command(pass_context = True)
+async def ban(ctx, member: discord.Member, *, reason=None):
+    await member.ban(reason=reason)
+    await ctx.send(f'The Member {member} Successfully Banned.')
 
 token = open("token.txt", "r").readline()
 
