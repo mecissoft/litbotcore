@@ -11,7 +11,7 @@ async def on_ready():
 	print("Bot Is Started!")
 
 async def ver ( ctx ):
-    await ctx.send('Ubutal Bot Core 1.6. Based On Ubutal Bot 1.6')
+    await ctx.send('Ubutal Bot Core 1.5.3. Based On Ubutal Bot 1.5.3')
     
 @client.event
 async def on_command_error(ctx, error):
