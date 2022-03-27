@@ -11,21 +11,12 @@ async def on_ready():
 	print("Bot Is Started!")
 
 async def ver ( ctx ):
-    await ctx.send('Ubutal Bot Core 1.6.1)
+    await ctx.send('LitBot Core 2.0)
     
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound ):
         await ctx.send('Command Not Found.')
-
-@client.command()
-async def rcat(ctx):
-    response = requests.get("https://some-random-api.ml/img/cat")
-    json_data = json.loads(response.text)
-
-    s = discord.Embed(color = 0xff9900, title = 'Random Cat')
-    s.set_image(url = json_data['link'])
-    await ctx.send(embed = s)
 
 @client.event
 async def on_ready():
@@ -60,6 +51,35 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 async def ban(ctx, member: discord.Member, *, reason=None):
     await member.ban(reason=reason)
     await ctx.send(f'The Member {member} Successfully Banned.')
+
+@client.event
+async def on_guild_join(guild):
+   welcome = bot.get_channel(guild_welcome[member.guild.id])
+   embed=discord.Embed(title="Добро пожаловать!", description=f"Welcome{member.guild.name} To {member.mention}!", color=0x4682B4)
+   await welcome.send(embed=embed)|
+
+@client.command()
+@commands.guild_only()
+async def serverinfo(ctx):
+    name = str(ctx.guild.name)
+    description = str(ctx.guild.description)
+
+    owner = str(ctx.guild.owner)
+    id = str(ctx.guild.id)
+    region = str(ctx.guild.region)
+    memberCount = str(ctx.guild.member_count)
+
+    icon = str(ctx.guild.icon_url)
+
+    embed = discord.Embed(
+        title=name + ": Server Info",
+        color=discord.Color(0x4682B4)
+    )
+    embed.set_thumbnail(url=icon)
+    embed.add_field(name="Owner", value=owner, inline=True)
+    embed.add_field(name="Server ID", value=id, inline=True)
+    embed.add_field(name="Region", value=region, inline=True)
+    embed.add_field(name="Members", value=memberCount, inline=True)
 
 token = open("token.txt", "r").readline()
 
