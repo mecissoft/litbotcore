@@ -11,7 +11,7 @@ async def on_ready():
 	print("Bot Is Started!")
 
 async def ver ( ctx ):
-    await ctx.send('LitBot Core 2.0)
+    await ctx.send('LitBot Core 2.1)
     
 @client.event
 async def on_command_error(ctx, error):
@@ -21,7 +21,7 @@ async def on_command_error(ctx, error):
 @client.event
 async def on_ready():
      while True:
-          await client.change_presence(status=discord.Status.online, activity=discord.Game("UBC Based"))
+          await client.change_presence(status=discord.Status.online, activity=discord.Game("LBC Based"))
 
 @client.command(name='say')
 async def audit(ctx, *, msg=None):
@@ -40,7 +40,7 @@ async def ping( ctx ):
 
 @client.command(pass_context = True)
 async def info( ctx ):
- await ctx.send('This Bot Based On Ubutal Bot Core!')
+ await ctx.send('This Bot Based On LitBot Core!')
 
 @client.command(pass_context = True)
 async def kick(ctx, member: discord.Member, *, reason=None):
@@ -55,7 +55,7 @@ async def ban(ctx, member: discord.Member, *, reason=None):
 @client.event
 async def on_guild_join(guild):
    welcome = bot.get_channel(guild_welcome[member.guild.id])
-   embed=discord.Embed(title="Добро пожаловать!", description=f"Welcome{member.guild.name} To {member.mention}!", color=0x4682B4)
+   embed=discord.Embed(title="Welcome!", description=f"Welcome{member.guild.name} To {member.mention}!", color=0x4682B4)
    await welcome.send(embed=embed)|
 
 @client.command()
